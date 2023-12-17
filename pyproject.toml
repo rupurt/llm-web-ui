@@ -1,0 +1,83 @@
+[build-system]
+requires = [
+  "setuptools >= 40.9.0",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-web-ui"
+version = "0.0.1"
+authors = [
+  {name="Alex Kwiatkowski", email="alex+python@fremantle.io"},
+]
+description = "A web ui for LLM. Manage and chat with models"
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">= 3.11"
+classifiers = [
+  "License :: OSI Approved :: MIT Software License",
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent"
+]
+dependencies = [
+  "llm >=0.0.12",
+  # "llm-http-api >=0.0.1",
+  "fastapi >=0.104.0",
+  "fastui >=0.3.0",
+  "pydantic >=2.5.0",
+  "pydantic-settings >=2.1.0",
+  "pyinstaller >=6.2.0",
+  "uvicorn >=0.24.0",
+]
+
+[project.entry-points.llm]
+llm_web_ui = "llm_web_ui"
+
+[project.optional-dependencies]
+test = [
+  "httpx >=0.25.2",
+  "llm-clip >=0.1",
+  "llm-embed-jina >=0.1.2",
+  "llm-gpt4all >=0.2",
+  "llama-cpp-python >=0.2.23",
+  "llm-llama-cpp >=0.3",
+  "llm-mlc >=0.5",
+  "llm-sentence-transformers >=0.1.2",
+  "pyhamcrest >=2.1.0",
+  "pytest ~=7.4.0",
+  "pytest-cov ~=4.1.0",
+  "ruff ~=0.1.0",
+]
+
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+  ".bzr",
+  ".direnv",
+  ".eggs",
+  ".git",
+  ".git-rewrite",
+  ".hg",
+  ".mypy_cache",
+  ".nox",
+  ".pants.d",
+  ".pytype",
+  ".ruff_cache",
+  ".svn",
+  ".tox",
+  ".venv",
+  "__pypackages__",
+  "_build",
+  "buck-out",
+  "build",
+  "dist",
+  "node_modules",
+  "venv",
+]
+
+[tool.pytest.ini_options]
+filterwarnings = [
+  "ignore:.*Pydantic V1 style `@validator` validators are deprecated.*:DeprecationWarning",
+  "ignore:.*Support for class-based `config` is deprecated.*:DeprecationWarning",
+  "ignore:.*pkg_resources is deprecated as an API.*:DeprecationWarning",
+]
